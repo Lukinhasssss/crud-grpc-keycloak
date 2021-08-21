@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.lukinhasssss";
+option java_outer_classname = "Deletar";
+
+package br.com.lukinhasssss;
+
+service DeletarService {
+  rpc deletar (DeletarRequest) returns (DeletarResponse) {}
+}
+
+message DeletarRequest {
+  int64 id = 1;
+}
+
+message DeletarResponse {
+  string message = 1;
+}
