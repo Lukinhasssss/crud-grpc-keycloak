@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.lukinhasssss";
+option java_outer_classname = "Salvar";
+
+package br.com.lukinhasssss;
+
+service SalvarService {
+  rpc salvar (SalvarRequest) returns (SalvarResponse) {}
+}
+
+message SalvarRequest {
+  string cep = 1;
+}
+
+message SalvarResponse {
+  string cep = 1;
+  string logradouro = 2;
+  string complemento = 3;
+  string bairro = 4;
+  string localidade = 5;
+  string uf = 6;
+  string ibge = 7;
+  string ddd = 8;
+}

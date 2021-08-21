@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.lukinhasssss";
+option java_outer_classname = "Listar";
+
+package br.com.lukinhasssss;
+
+service ListarService {
+  rpc listar (ListarRequest) returns (ListarResponse) {}
+}
+
+message ListarRequest{}
+
+message ListarResponse{
+  message Lista{
+    string id = 1;
+    string cep = 2;
+    string logradouro = 3;
+    string bairro = 4;
+    string localidade = 5;
+    string uf = 6;
+    string ibge = 7;
+    string ddd = 8;
+    string complemento = 9;
+  }
+
+  int64 id = 1;
+  repeated Lista lista = 2;
+}
