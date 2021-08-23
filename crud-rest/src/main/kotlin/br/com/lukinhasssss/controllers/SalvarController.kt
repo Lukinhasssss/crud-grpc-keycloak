@@ -7,6 +7,9 @@ import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.PathVariable
 import io.micronaut.http.annotation.Post
+import io.micronaut.security.annotation.Secured
+import io.micronaut.security.rules.SecurityRule
+import javax.annotation.security.RolesAllowed
 
 @Controller("/v1/cadastro")
 class SalvarController(
@@ -14,6 +17,8 @@ class SalvarController(
 ) {
 
     @Post("/{cep}")
+    @Secured(SecurityRule.IS_AUTHENTICATED)
+    @RolesAllowed("admin")
     fun salvar(@PathVariable cep: String): HttpResponse<CepResponse> {
         grpcClient.salvar(SalvarRequest.newBuilder()
             .setCep(cep)

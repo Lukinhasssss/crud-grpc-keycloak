@@ -6,6 +6,9 @@ import br.com.lukinhasssss.ListarServiceGrpc
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
+import io.micronaut.security.annotation.Secured
+import io.micronaut.security.rules.SecurityRule
+import javax.annotation.security.PermitAll
 
 @Controller("/v1/cadastro")
 class ListarController(
@@ -13,6 +16,7 @@ class ListarController(
 ) {
 
     @Get
+    @PermitAll
     fun listar(): HttpResponse<List<ListarCepsResponse>> {
         return grpcClient.listar(ListarRequest.newBuilder().build()).listaList.map {
             ListarCepsResponse(it)
