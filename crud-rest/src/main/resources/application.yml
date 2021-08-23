@@ -1,9 +1,17 @@
 micronaut:
   application:
     name: crudRest
-
-server:
-  port: ${SERVER_PORT:8080}
+  server:
+    port: ${SERVER_PORT:8080}
+  security:
+    authentication: bearer
+    token:
+      jwt:
+        enabled: true
+        signatures:
+          jwks:
+            keycloak:
+              url: http://localhost:18080/auth/realms/grpc-rest/protocol/openid-connect/certs
 
 grpc:
   client:
